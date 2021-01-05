@@ -3,31 +3,40 @@ function two(type)
   result = construct(type)
   a = unity(type)
   b = unity(type)
-  return add(a,b)
+  add(a,b,result)
+  return result
 end
 
-function construct(::Type{Int64})
-  return 0::Int64
+mutable struct SignedInt64Member
+  v :: Int64
 end
 
-function unity(::Type{Int64})
-  return 1::Int64
+function construct(::Type{SignedInt64Member})
+  return SignedInt64Member(0)
 end
 
-function add(a :: Int64, b :: Int64)
-  return a + b
+function unity(::Type{SignedInt64Member})
+  return SignedInt64Member(1)
 end
 
-function construct(::Type{Float64})
-  return 0.0::Float64
+function add(a :: SignedInt64Member, b :: SignedInt64Member, c :: SignedInt64Member)
+  c.v = a.v + b.v
 end
 
-function unity(::Type{Float64})
-  return 1.0::Float64
+mutable struct Float64Member
+  v :: Float64
 end
 
-function add(a :: Float64, b :: Float64)
-  return a + b
+function construct(::Type{Float64Member})
+  return Float64Member(0.0)
+end
+
+function unity(::Type{Float64Member})
+  return Float64Member(1.0)
+end
+
+function add(a :: Float64Member, b :: Float64Member, c :: Float64Member)
+  c.v = a.v + b.v
 end
 
 mutable struct Mat22
@@ -45,13 +54,16 @@ function unity(::Type{Mat22})
    return Mat22(1.0,0.0,0.0,1.0)
 end
 
-function add(a :: Mat22, b :: Mat22)
-  return Mat22(a.zz+b.zz,a.zo+b.zo,a.oz+b.oz,a.oo+b.oo)
+function add(a :: Mat22, b :: Mat22, c :: Mat22)
+  c.zz = a.zz + b.zz
+  c.zo = a.zo + b.zo
+  c.oz = a.oz + b.oz
+  c.oo = a.oo + b.oo
 end
 
-println(two(Int64))
+println(two(SignedInt64Member))
 
-println(two(Float64))
+println(two(Float64Member))
 
 println(two(Mat22))
 
