@@ -56,7 +56,7 @@ function unity(a :: Mat22)
   a.zz = 1.0
   a.zo = 0.0
   a.oz = 0.0
-  a.oo = 0.0
+  a.oo = 1.0
 end
 
 function add(a :: Mat22, b :: Mat22, c :: Mat22)
