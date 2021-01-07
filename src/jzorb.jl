@@ -1,9 +1,9 @@
 
-include("signed_int64_member.jl")
-include("float64_member.jl")
-include("mat22.jl")
+include("type/signed_int64_member.jl")
+include("type/float64_member.jl")
+include("type/mat22.jl")
 
-include("two.jl")
+include("algo/two.jl")
 
 println(two(SignedInt64Member))
 
