@@ -3,7 +3,5 @@ jzorb: general numeric processing in julia (inspired by zorbage)
 Reusable types and algorithms for numeric processing. Fast and
 generic code. Easily extensible.
 
-jzorb is coming soon!
-
 What is zorbage?  See https://github.com/bdezonia/zorbage
 
