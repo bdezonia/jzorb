@@ -1,13 +1,16 @@
+push!(LOAD_PATH, "algebra")
+push!(LOAD_PATH, "algo")
+push!(LOAD_PATH, "type")
 
-include("type/signed_int64_member.jl")
-include("type/float64_member.jl")
-include("type/mat22.jl")
+using SignedInt64MemberMod
+using Float64MemberMod
+using Mat22MemberMod
 
-include("algo/two.jl")
+using TwoAlgoMod
 
 println(two(SignedInt64Member))
 
 println(two(Float64Member))
 
-println(two(Mat22))
+println(two(Mat22Member))
 
